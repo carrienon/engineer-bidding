@@ -4,9 +4,9 @@
       <img :src="logoUrl" />
     </div>
     <div class="right">
-      <span><i class="iconfont icontubiao01"></i></span>
-      <span><i class="iconfont icontixing"></i></span>
-      <span><img :src="logoUrl" />朱俊成</span>
+      <a href="javascript:;"><i class="iconfont icontubiao01"></i></a>
+      <a href="javascript:;"><i class="iconfont icontixing"></i></a>
+      <a href="javascript:;"><img :src="logoUrl" />朱俊成</a>
     </div>
   </div>
 </template>
@@ -45,7 +45,7 @@ export default {
     .right
       display:flex;
       align-items:center;
-      span 
+      a 
         color:#18ACC3;
         margin-left:30px;
         font-size:14px;

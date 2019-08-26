@@ -2,7 +2,7 @@
   <div class="wrapper">
     <span class="left"><img :src="imgurl">{{title}}</span>
     <span class="middle"></span>
-    <span class="right"></span>
+    <span class="right"><slot name="right"></slot></span>
   </div>
 </template>
 

@@ -61,9 +61,10 @@
       thead th .cell
         line-height:65px;
         height:65px;
+        color:#6D6F77;
       .cell
-        line-height:84px;
-        height:84px;
+        line-height:60px;
+        height:60px;
         max-width:200px;
         ellipsis()
       tbody .cell
