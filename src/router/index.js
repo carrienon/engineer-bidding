@@ -64,6 +64,11 @@ export default new Router({
           path: 'index',
           component: () => import('@/pages/order-manage/index'),
           name: 'OrderIndex'
+        },
+        {
+          path: 'create-order',
+          component: () => import('@/pages/order-manage/create-order'),
+          name: 'CreateOrder'
         }
       ]
     },

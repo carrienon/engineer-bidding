@@ -94,12 +94,19 @@
   .wrapper>>>.el-input__inner::-webkit-input-placeholder,.wrapper>>>.el-textarea__inner::-webkit-input-placeholder
     font-family:'MicrosoftYaHei';
     color:#999999;
+  .wrapper>>>.el-form-item__label
+    text-align:left;
+  .wrapper>>>.el-input__inner,,.wrapper>>>.el-textarea__inner
+    width:300px;
+    border:none;
+    background:#F7F6F7;
+
   .content
     boxstyle()
     .top
       display:flex;
-      justify-content:space-around;
-      padding:66px 0 148px 0;
+      justify-content:space-between;
+      padding:66px 502px 148px 260px;
       .left
         width:400px;
       .right

@@ -3,7 +3,7 @@
     <ul class="state-list">
       <li :class="activeIndex===index?'active':''" v-for="(item,index) in stateList" :key="index" @click="changeState(index)">{{item}}</li>
     </ul>
-    <a href="javascript:;">
+    <a href="javascript:;" @click="createOrder">
       <i class="iconfont iconxinjian"></i>创建订单
     </a>
   </div>
@@ -25,6 +25,10 @@
     methods: {
       changeState(index){
         this.activeIndex = index
+        this.$emit('changeState',index)
+      },
+      createOrder(){
+        this.$emit('createOrder')
       }
     }
   }
@@ -51,6 +55,7 @@
       .active
         font-weight:bold;
         border-bottom:2px solid $color-theme;
+        color:#666;
     a
       color:#999999;
       i 
