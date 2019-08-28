@@ -43,7 +43,7 @@
               <span class="check" v-if="orderState===1" @click="cancelTask">取消任务</span>
               <span class="transfer" v-if="orderState===1" @click="refreshOffer">重新报价</span>
               <span class="check" v-if="orderState===2" @click="deleteTask">取消投标</span>
-              <span class="delete" v-if="orderState===3">创建合同</span>
+              <span class="delete" v-if="orderState===3" @click="createContract">创建合同</span>
               <span class="transfer" v-if="orderState===6">评价</span>
             </div>
           </td>
@@ -103,6 +103,9 @@
       },
       chooseBidding(){
         this.$emit('chooseBidding')
+      },
+      createContract(){
+        this.$router.push('./create-contract')
       }
     }
   }

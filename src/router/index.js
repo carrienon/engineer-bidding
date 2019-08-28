@@ -71,6 +71,11 @@ export default new Router({
           name: 'CreateOrder'
         },
         {
+          path: 'create-contract',
+          component: () => import('@/pages/order-manage/create-contract'),
+          name: 'CreateContract'
+        },
+        {
           path: 'contract-manage',
           component: () => import('@/pages/order-manage/contract-manage/index'),
           name: 'ContractManage'
