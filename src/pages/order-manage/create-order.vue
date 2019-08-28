@@ -201,8 +201,8 @@
   .content>>>.el-input__inner::placeholder,.content>>>.el-textarea__inner::placeholder
     color:#999999;
     font-family:'MicrosoftYaHei';
-  .right>>>.el-input
-    width:80%;
+  .content>>>.el-form-item__content
+    display:flex;
   .right>>>.el-button
     background:#74B7F5;
     font-family:'MicrosoftYaHei';
@@ -217,7 +217,9 @@
         margin-left:68px;
       .right
         margin-left:165px;
-        width:600px;
   .content-two
     margin-top:8px;
+    .container
+      .right
+        width:600px;
 </style>

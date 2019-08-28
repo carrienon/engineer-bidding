@@ -7,7 +7,6 @@
         :titleData="titleData" 
         :tableData="tableData" 
         :totalData="totalData"
-        :operation="operation"
       >
       </table-list>
       <bottom-pagination></bottom-pagination>
@@ -18,7 +17,7 @@
 <script>
   import TaskList from './components/task-list'
   import TitleBar from '@/components/title-bar'
-  import TableList from '@/components/table-list'
+  import TableList from './components/table-list'
   import BottomPagination from '@/components/bottom-pagination'
 
   export default {
@@ -26,7 +25,6 @@
       return {
         title:'我的待办',
         imgurl:require('assets/logo.png'),
-        operation:true,
         tableData: [
           {
             number: '1',

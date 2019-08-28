@@ -4,11 +4,17 @@
       <thead>
         <tr>
           <th v-for="(item,index) in titleData" :key="index"><div class="cell">{{item}}</div></th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(items,sindex) in tableData" :key="sindex">
           <td v-for="(item,index) in items" :key="index"><div class="cell">{{item}}</div></td>
+          <td>
+            <!-- 我的待办 -->
+            <div class="button start" v-if="totalData.length>0&&totalData[sindex].status==1">开始</div>
+            <div class="button end" v-if="totalData.length>0&&totalData[sindex].status==0">完成</div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -25,6 +31,12 @@
       tableData:{
         type:Array,
         default:[]
+      },
+      totalData:{
+        type:Array,
+        default:()=>{
+          return []
+        }
       }
     },
     data() {

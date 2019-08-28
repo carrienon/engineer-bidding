@@ -69,6 +69,16 @@ export default new Router({
           path: 'create-order',
           component: () => import('@/pages/order-manage/create-order'),
           name: 'CreateOrder'
+        },
+        {
+          path: 'contract-manage',
+          component: () => import('@/pages/order-manage/contract-manage/index'),
+          name: 'ContractManage'
+        },
+        {
+          path: 'client-follow',
+          component: () => import('@/pages/order-manage/client-follow'),
+          name: 'ClientFollow'
         }
       ]
     },

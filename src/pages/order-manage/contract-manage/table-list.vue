@@ -4,11 +4,31 @@
       <thead>
         <tr>
           <th v-for="(item,index) in titleData" :key="index"><div class="cell">{{item}}</div></th>
+          <th v-if="contractState===0">合同附件</th>
+          <th v-if="contractState===0">合同</th>
+          <th v-if="operation">操作</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(items,sindex) in tableData" :key="sindex">
           <td v-for="(item,index) in items" :key="index"><div class="cell">{{item}}</div></td>
+          <td v-if="contractState===0">
+            <div class="button">
+              <span class="check" v-if="contractState===0">下载</span>
+            </div>
+          </td>
+          <td v-if="contractState===0">
+            <div class="button">
+              <span class="check" v-if="contractState===0">查看</span>
+            </div>
+          </td>
+          <td v-if="operation">
+            <div class="button">
+              <span class="edit" v-if="contractState===0">催办</span>
+              <span class="delete" v-if="contractState===0">审核</span>
+              <span class="transfer" v-if="contractState===1">上传</span>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -25,6 +45,14 @@
       tableData:{
         type:Array,
         default:[]
+      },
+      operation:{
+        type:Boolean,
+        default:false
+      },//是否有操作按钮
+      contractState:{
+        type:Number,
+        default:0
       }
     },
     data() {
@@ -60,10 +88,6 @@
         background:#FAFAFC;
       .button
         cursor:pointer;
-      .start
-        color:#45CB78;
-      .end
-        color:#52AAE8;
       .edit
         color:#21C79A;
         margin-right:20px;

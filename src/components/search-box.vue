@@ -9,7 +9,7 @@
     </span>
     <span class="keyword">
       <el-input
-        placeholder="请输入订单编号/订单名称"
+        :placeholder="placeHolder"
         prefix-icon="el-icon-search"
         v-model="input21">
       </el-input>
@@ -21,7 +21,10 @@
 <script>
 export default {
   props:{
-    
+    placeHolder:{
+      type:String,
+      default:''
+    }
   },
   data () {
     return {

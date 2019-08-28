@@ -2,18 +2,38 @@
   <div class="wrapper">
     <title-bar :title="title" :imgurl="imgurl"></title-bar>
     <div class="content">
-      <tab-bar :stateList="stateList" @changeState="changeState" @createOrder="createOrder"></tab-bar>
-      <search-box></search-box>
+      <tab-bar :showButton="showButton" :stateList="stateList" @changeState="changeState" @createOrder="createOrder"></tab-bar>
+      <search-box  placeHolder="请输入订单编号/名称"></search-box>
       <table-list 
         :titleData="titleData" 
         :tableData="tableData" 
         :operation="operation"
         :userRole="userRole"
         :orderState="orderState"
+        @deleteTask="deleteTask"
+        @cancelTask="cancelTask"
+        @refreshOffer="refreshOffer"
+        @chooseBidding="chooseBidding"
       >
       </table-list>
       <bottom-pagination></bottom-pagination>
     </div>
+    <message-box 
+      :showBox="showBox" 
+      :tipInfo="tipInfo"
+      @cancelDelete="cancelDelete"
+      @confirmDelete="confirmDelete"
+    ></message-box>
+    <refresh-offer 
+      :showOffer="showOffer"
+      @cancelOffer="cancelOffer"
+      @confirmOffer="confirmOffer"
+    ></refresh-offer>
+    <choose-bidding 
+      :showChoose="showChoose"
+      @cancelChoose="cancelChoose"
+      @confirmChoose="confirmChoose"
+    ></choose-bidding>
   </div>
 </template>
 
@@ -21,16 +41,24 @@
   import TitleBar from '@/components/title-bar'
   import TabBar from '@/components/tab-bar'
   import SearchBox from '@/components/search-box'
-  import TableList from '@/components/table-list'
+  import TableList from './components/table-list'
   import BottomPagination from '@/components/bottom-pagination'
+  import MessageBox from '@/components/message-box'
+  import RefreshOffer from './components/refresh-offer'
+  import ChooseBidding from './components/choose-bidding'
 
   export default {
     data () {
       return {
         title:'订单管理',
         imgurl:require('assets/logo.png'),
+        showButton:true,
         userRole:2,//用户角色，1为中都方，2为平台方
         orderState:0,//订单状态
+        tipInfo:'',
+        showBox:false,
+        showOffer:false,
+        showChoose:false,
         operation:true,
         tableData: [
           {
@@ -117,6 +145,38 @@
       },
       createOrder(){
         this.$router.push('./create-order')
+      },
+      deleteTask(){
+        this.tipInfo = '确认删除此订单？'
+        this.showBox = true
+      },
+      confirmDelete(){
+        this.showBox = false
+      },
+      cancelDelete(){
+        this.showBox = false
+      },
+      cancelTask(){
+        this.tipInfo = '确认撤销投标？'
+        this.showBox = true
+      },
+      refreshOffer(){
+        this.showOffer = true
+      },
+      cancelOffer(){
+        this.showOffer = false
+      },
+      confirmOffer(){
+        this.showOffer = false
+      },
+      chooseBidding(){
+        this.showChoose = true
+      },
+      cancelChoose(){
+        this.showChoose = false
+      },
+      confirmChoose(){
+        this.showChoose = false
       }
     },
     components:{
@@ -124,7 +184,10 @@
       TabBar,
       SearchBox,
       TableList,
-      BottomPagination
+      BottomPagination,
+      MessageBox,
+      RefreshOffer,
+      ChooseBidding
     }
   }
 </script>

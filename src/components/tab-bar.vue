@@ -3,7 +3,7 @@
     <ul class="state-list">
       <li :class="activeIndex===index?'active':''" v-for="(item,index) in stateList" :key="index" @click="changeState(index)">{{item}}</li>
     </ul>
-    <a href="javascript:;" @click="createOrder">
+    <a href="javascript:;" @click="createOrder" v-show="showButton">
       <i class="iconfont iconxinjian"></i>创建订单
     </a>
   </div>
@@ -15,6 +15,10 @@
       stateList:{
         type:Array,
         default:[]
+      },
+      showButton:{
+        type:Boolean,
+        default:false
       }
     },
     data() {
