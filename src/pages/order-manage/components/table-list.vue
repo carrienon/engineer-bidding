@@ -17,12 +17,12 @@
           <!-- 订单管理平台方 -->
           <td v-if="userRole===2&&(orderState===3||orderState===4||orderState===5||orderState===6)">
             <div class="button">
-              <span class="check">查看</span>
+              <span class="check" @click="checkInfo">查看</span>
             </div>
           </td>
           <td v-if="userRole===2&&(orderState===3||orderState===4||orderState===5||orderState===6)">
             <div class="button">
-              <span class="check">查看</span>
+              <span class="check" @click="checkInfo">查看</span>
             </div>
           </td>
           <td v-if="operation">
@@ -30,11 +30,11 @@
             <div class="button" v-if="userRole===1">
               <span class="edit" v-if="orderState===0" @click="editOrder">编辑</span>
               <span class="delete" v-if="orderState===0" @click="deleteTask">删除</span>
-              <span class="check" v-if="orderState===1">审核</span>
-              <span class="transfer" v-if="orderState===1">转申</span>
-              <span class="urge" v-if="orderState===1">催办</span>
+              <span class="check" v-if="orderState===1" @click="checkOrder">审核</span>
+              <span class="transfer" v-if="orderState===1" @click="transfer">转申</span>
+              <span class="urge" v-if="orderState===1" @click="urgeDo">催办</span>
               <span class="edit" v-if="orderState===2" @click="chooseBidding">选择中标方</span>
-              <span class="check" v-if="orderState===3">创建合同/查看</span>
+              <span class="check" v-if="orderState===3" @click="createContract">创建合同/查看</span>
             </div>
             <!-- 订单管理平台方 -->
             <div class="button" v-if="userRole===2">
@@ -44,7 +44,7 @@
               <span class="transfer" v-if="orderState===1" @click="refreshOffer">重新报价</span>
               <span class="check" v-if="orderState===2" @click="deleteTask">取消投标</span>
               <span class="delete" v-if="orderState===3" @click="createContract">创建合同</span>
-              <span class="transfer" v-if="orderState===6">评价</span>
+              <span class="transfer" v-if="orderState===6" @click="judgeOrder">评价</span>
             </div>
           </td>
           <!-- 订单管理平台方 -->
@@ -106,6 +106,21 @@
       },
       createContract(){
         this.$router.push('./create-contract')
+      },
+      checkInfo(){
+        this.$emit('checkInfo')
+      },
+      judgeOrder(){
+        this.$emit('judgeOrder')
+      },
+      checkOrder(){
+        this.$router.push('./check-order')
+      },
+      urgeDo(){
+        this.$emit('urgeDo')
+      },
+      transfer(){
+        this.$emit('transfer')
       }
     }
   }

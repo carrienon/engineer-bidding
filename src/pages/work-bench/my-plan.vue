@@ -1,23 +1,45 @@
 <template>
   <div class="wrapper">
-    <full-calendar :events="fcEvents" locale="en"></full-calendar>
+    <title-bar :title="title" :imgurl="imgurl"></title-bar>
+    <div class="content">
+      <el-calendar>
+        <template
+          slot="dateCell"
+          slot-scope="{date, data}">
+          <p>
+            {{ data.day.split('-').slice(1).join('-') }}
+          </p>
+        </template>
+      </el-calendar>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      fcEvents : demoEvents
+  import TitleBar from '@/components/title-bar'
+
+  export default {
+    data () {
+      return {
+        title:'我的计划',
+        imgurl:require('assets/logo.png')
+      }
+    },
+    mounted(){
+      
+    },
+    methods:{
+      
+    },
+    components:{
+      TitleBar
     }
-  },
-  components : {
-	'full-calendar': require('vue-fullcalendar')	
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style scoped lang="stylus">
+  @import "~assets/styles/mixins"
+  .content
+    boxstyle()
 </style>

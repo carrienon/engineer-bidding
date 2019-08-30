@@ -14,26 +14,49 @@
         @cancelTask="cancelTask"
         @refreshOffer="refreshOffer"
         @chooseBidding="chooseBidding"
+        @checkInfo="closeWindow"
+        @judgeOrder="judgeOrder"
+        @urgeDo="closeTip"
+        @transfer="transfer"
       >
       </table-list>
       <bottom-pagination></bottom-pagination>
     </div>
+    <!-- 删除提示框 -->
     <message-box 
       :showBox="showBox" 
       :tipInfo="tipInfo"
       @cancelDelete="cancelDelete"
       @confirmDelete="confirmDelete"
     ></message-box>
+    <!-- 重新报价 -->
     <refresh-offer 
       :showOffer="showOffer"
       @cancelOffer="cancelOffer"
       @confirmOffer="confirmOffer"
     ></refresh-offer>
+    <!-- 转申 -->
+    <transfer 
+      :showTransfer="showTransfer"
+      @cancelTransfer="cancelTransfer"
+      @confirmTransfer="confirmTransfer"
+    ></transfer>
+    <!-- 选择中标方 -->
     <choose-bidding 
       :showChoose="showChoose"
       @cancelChoose="cancelChoose"
       @confirmChoose="confirmChoose"
     ></choose-bidding>
+    <!-- 查看甲方乙方信息 -->
+    <check-info :showInfo="showInfo" @closeWindow="closeWindow"></check-info>
+    <!-- 评价 -->
+    <Judge :showJudge="showJudge" @cancelJudge="cancelJudge" @confirmJudge="cancelJudge"></Judge>
+    <!-- 催办成功 -->
+    <tip-box 
+      :showTip="showTip" 
+      tipInfo="催办成功！"
+      @closeTip="closeTip"
+    ></tip-box>
   </div>
 </template>
 
@@ -44,8 +67,12 @@
   import TableList from './components/table-list'
   import BottomPagination from '@/components/bottom-pagination'
   import MessageBox from '@/components/message-box'
+  import TipBox from '@/components/tip-box'
   import RefreshOffer from './components/refresh-offer'
   import ChooseBidding from './components/choose-bidding'
+  import CheckInfo from './components/check-info'
+  import Judge from './components/judge'
+  import Transfer from './components/transfer'
 
   export default {
     data () {
@@ -53,12 +80,16 @@
         title:'订单管理',
         imgurl:require('assets/logo.png'),
         showButton:true,
-        userRole:2,//用户角色，1为中都方，2为平台方
+        userRole:1,//用户角色，1为中都方，2为平台方
         orderState:0,//订单状态
         tipInfo:'',
-        showBox:false,
-        showOffer:false,
-        showChoose:false,
+        showBox:false,//删除提示信息框
+        showOffer:false,//重新报价
+        showChoose:false,//选择中标方
+        showInfo:false,//查看甲方乙方信息
+        showJudge:false,//评价
+        showTip:false,//催办成功
+        showTransfer:false,//转申
         operation:true,
         tableData: [
           {
@@ -146,6 +177,7 @@
       createOrder(){
         this.$router.push('./create-order')
       },
+      // 删除订单
       deleteTask(){
         this.tipInfo = '确认删除此订单？'
         this.showBox = true
@@ -156,10 +188,12 @@
       cancelDelete(){
         this.showBox = false
       },
+      // 取消投标
       cancelTask(){
         this.tipInfo = '确认撤销投标？'
         this.showBox = true
       },
+      // 重新报价
       refreshOffer(){
         this.showOffer = true
       },
@@ -169,6 +203,7 @@
       confirmOffer(){
         this.showOffer = false
       },
+      // 选择中标方
       chooseBidding(){
         this.showChoose = true
       },
@@ -177,6 +212,30 @@
       },
       confirmChoose(){
         this.showChoose = false
+      },
+      //查看甲方乙方信息
+      closeWindow(){
+        this.showInfo = !this.showInfo
+      },
+      // 评价
+      judgeOrder(){
+        this.showJudge = true
+      },
+      cancelJudge(){
+        this.showJudge = false
+      },
+      closeTip(){
+        this.showTip = !this.showTip
+      },
+      //转申
+      transfer(){
+        this.showTransfer = !this.showTransfer
+      },
+      cancelTransfer(){
+        this.showTransfer = !this.showTransfer
+      },
+      confirmTransfer(){
+        this.showTransfer = !this.showTransfer
       }
     },
     components:{
@@ -187,7 +246,11 @@
       BottomPagination,
       MessageBox,
       RefreshOffer,
-      ChooseBidding
+      ChooseBidding,
+      CheckInfo,
+      Judge,
+      TipBox,
+      Transfer
     }
   }
 </script>
