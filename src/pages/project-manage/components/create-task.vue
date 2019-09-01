@@ -1,0 +1,91 @@
+<template>
+  <div class="wrapper" v-show="showCreate">
+    <div class="content">
+      <p class="title">添加任务</p>
+      <el-form ref="form" :model="form" label-width="115px" label-position="left">
+        <el-form-item label="任务负责人员">
+          <el-input v-model="form.name" placeholder="请选择任务负责人员"></el-input>
+        </el-form-item>
+        <el-form-item label="任务占比">
+        <el-input v-model="form.name" placeholder="请输入任务占比"></el-input>
+        </el-form-item>
+        <el-form-item label="任务内容">
+          <el-input type="textarea" rows="5" v-model="form.desc" placeholder="请输入任务内容"></el-input>
+        </el-form-item>
+      </el-form>
+      <p class="button"><a href="javascript:;" @click="cancelTask">取消</a><a href="javascript:;" @click="confirmTask">确认</a></p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props:{
+    showCreate:{
+      type:Boolean,
+      default:false
+    }
+  },
+  data () {
+    return {
+      form:{
+        name:'',
+        desc:''
+      }
+    }
+  },
+  methods:{
+    cancelTask(){
+      this.$emit('cancelTask')
+    },
+    confirmTask(){
+      this.$emit('confirmTask')
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="stylus" scoped>
+  @import "~assets/styles/mixins"
+  .wrapper>>>.el-input
+    width:277px;
+  .wrapper>>>.el-input__inner::-webkit-input-placeholder,.wrapper>>>.el-textarea__inner::-webkit-input-placeholder
+    font-family:'MicrosoftYaHei';
+    color:#ccc;
+  .wrapper
+    position:fixed;
+    top:0;
+    left:0;
+    height:100vh;
+    width:100%;
+    background:rgba(0,0,0,0.3);
+    z-index:11;
+    .content
+      position:relative;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      width:488px;
+      padding:39px 0 45px 0;
+      box-sizing:border-box;
+      background:rgba(255,255,255,1);
+      border-radius:4px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-around;
+      align-items:center;
+      .title
+        color:#666666;
+        margin-bottom:42px;
+        font-size:16px;
+      .button
+        a
+          display:inline-block;
+          button(#4ED0E4,140px,40px,14px,4px)
+        a:first-child
+          background:rgba(218,246,250,1);
+          border:1px solid rgba(78,208,228,1);
+          color:#4ED0E4;
+          margin-right:80px;
+</style>

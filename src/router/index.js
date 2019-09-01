@@ -101,6 +101,11 @@ export default new Router({
           path: 'index',
           component: () => import('@/pages/project-manage/index'),
           name: 'ProjectIndex'
+        },
+        {
+          path: 'check-project',
+          component: () => import('@/pages/project-manage/check-project'),
+          name: 'CheckProject'
         }
       ]
     },
