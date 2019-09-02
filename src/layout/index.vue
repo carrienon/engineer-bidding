@@ -36,4 +36,11 @@
       width:calc(100vw - 100px);
       min-height:calc(100vh - 80px);
       margin-top:80px;
+  .app-wrapper::-webkit-scrollbar
+    height:12px;
+  .app-wrapper::-webkit-scrollbar-thumb
+    border-radius:6px;
+    background:#DEDEE0;
+  .app-wrapper::-webkit-scrollbar-track
+    background:#F2F2F5;
 </style>

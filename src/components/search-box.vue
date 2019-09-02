@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <div v-if="!showSelect" class="left">
-      <span class="date">
+      <span class="date" v-if="showDate">
         <el-date-picker
           v-model="value1"
           type="date"
@@ -40,6 +40,10 @@ export default {
     showSelect:{
       type:Boolean,
       default:false
+    },
+    showDate:{
+      type:Boolean,
+      default:true
     }
   },
   data () {

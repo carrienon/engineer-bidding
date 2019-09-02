@@ -208,6 +208,8 @@
     font-family:'MicrosoftYaHei';
     color:#fff;
     border:none;
+  .right>>>.el-radio
+    line-height:40px;
   .content
     boxstyle()
     .container

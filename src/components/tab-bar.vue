@@ -6,6 +6,9 @@
     <a href="javascript:;" @click="createOrder" v-show="showButton">
       <i class="iconfont iconxinjian"></i>创建订单
     </a>
+    <a href="javascript:;" @click="createBill" v-show="showBill">
+      <i class="iconfont iconxinjian"></i>申请发票
+    </a>
   </div>
 </template>
 
@@ -17,6 +20,10 @@
         default:[]
       },
       showButton:{
+        type:Boolean,
+        default:false
+      },
+      showBill:{
         type:Boolean,
         default:false
       }
@@ -33,6 +40,9 @@
       },
       createOrder(){
         this.$emit('createOrder')
+      },
+      createBill(){
+        this.$emit('createBill')
       }
     }
   }
