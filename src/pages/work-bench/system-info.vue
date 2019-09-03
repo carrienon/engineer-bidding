@@ -24,7 +24,7 @@
     data () {
       return {
         title:'我的消息',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_newss.png'),
         infoData:[
           {
             name:'标题标题标题标题标题标题标题标题标题标题标题标题',

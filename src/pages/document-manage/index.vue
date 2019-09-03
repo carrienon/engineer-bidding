@@ -26,7 +26,7 @@
     data () {
       return {
         title:'文档管理',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_project.png'),
         userRole:1,//用户角色，1为中都方，2为平台方
         projectSate:0,
         showSelect:false,

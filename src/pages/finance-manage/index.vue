@@ -2,7 +2,7 @@
   <div class="wrapper">
     <title-bar :title="title" :imgurl="imgurl"></title-bar>
     <div class="content">
-      <tab-bar :stateList="stateList" :showBill="showBill" @changeState="changeState"></tab-bar>
+      <tab-bar :stateList="stateList" buttonName="申请发票" :showButton="showButton" @changeState="changeState"></tab-bar>
       <search-box :showSelect="showSelect"  :showDate="showDate" placeHolder="请输入关键词/编号/名称"></search-box>
       <table-list 
         :titleData="titleData" 
@@ -26,12 +26,12 @@
     data () {
       return {
         title:'财务管理',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_order manage.png'),
         userRole:1,//用户角色，1为中都方，2为平台方
         tabState:0,
         showSelect:false,
         showDate:false,
-        showBill:false,
+        showButton:false,
         stateList:['收支管理','中都发票管理','平台发票管理','我的金融'],
         tableData:[
           {
@@ -72,9 +72,9 @@
       changeState(index){
         this.tabState = index
         if(index===1){
-          this.showBill=true
+          this.showButton=true
         }else{
-          this.showBill=false
+          this.showButton=false
         }
       }
     },

@@ -64,7 +64,7 @@
     data () {
       return {
         title:'新建任务',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_assignment.png'),
         form: {
           name: '',
           region: '',

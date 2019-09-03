@@ -22,7 +22,7 @@
     data () {
       return {
         title:'我的计划',
-        imgurl:require('assets/logo.png')
+        imgurl:require('assets/image/title/ic_myplan.png')
       }
     },
     mounted(){

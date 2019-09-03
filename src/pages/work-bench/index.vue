@@ -24,7 +24,7 @@
     data () {
       return {
         title:'我的待办',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_schedule.png'),
         tableData: [
           {
             number: '1',

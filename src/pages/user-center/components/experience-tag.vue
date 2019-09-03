@@ -1,42 +1,77 @@
 <template>
   <div class="wrapper">
-    <title-bar :title="title" :imgurl="imgurl"></title-bar>
-    <div class="content">
-      <tab-bar 
-        :stateList="stateList" 
-        :showButton="showButton" 
-        buttonName="添加工作经验" 
-        @changeState="changeState"></tab-bar>
-      <div v-if="stateIndex==0">
-        <person-info></person-info>
-        <professional-info></professional-info>
-        <experience-tag></experience-tag>
+    <p class="top-title"><span>个人工作经历</span><a class="add" href="javascript:;">添加工作经历</a></p>
+    <div class="container work-wrapper">
+      <div class="work-item" v-for="(item,index) in workData" :key="index">
+        <div class="work-left">
+          <span>2017.6.6</span><span>至</span><span>2017.6.6</span>
+          <em v-if="index!=workData.length-1"></em>
+        </div>
+        <div class="work-right">
+          <div>
+            <p><span>工作所在地</span><span>{{item.address}}</span></p>
+            <p><span>具体地区</span><span>{{item.detail}}</span></p>
+            <p><span>工作单位名称</span><span>{{item.company}}</span></p>
+            <p><span>工作时间</span><span>{{item.time}}</span></p>
+          </div>
+          <div>
+            <p><span>职位</span><span>{{item.position}}</span></p>
+            <p><span>部门</span><span>{{item.department}}</span></p>
+            <p><span>部门描述</span><span>{{item.description}}</span></p>
+          </div>
+        </div>
       </div>
-      <div v-else>
-        <table-list></table-list>
+    </div>
+    <p class="top-title"><span>个人标签</span><a class="edit" href="javascript:;">编辑</a></p>
+    <div class="container">
+      <div class="tag-item">
+        <div class="tag-left">职业技能</div>
+        <div class="tag-right">
+          <span v-for="(item,index) in skillTag" :key="index">{{item}}<i class="iconfont icondelete-s"></i></span>
+          <span class="add-tag"><i class="iconfont iconuntitled44"></i></span>
+        </div>
+      </div>
+      <div class="tag-item">
+        <div class="tag-left">工作技能</div>
+        <div class="tag-right">
+          <span v-for="(item,index) in workTag" :key="index">{{item}}<i class="iconfont icondelete-s"></i></span>
+          <span class="add-tag"><i class="iconfont iconuntitled44"></i></span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import TitleBar from '@/components/title-bar'
-  import TabBar from '@/components/tab-bar'
-
-  import PersonInfo from './components/person-info'
-  import ProfessionalInfo from './components/professional-info'
-  import ExperienceTag from './components/experience-tag'
-  import TableList from './components/table-list'
-
   export default {
     data () {
       return {
         title:'个人中心',
-        imgurl:require('assets/image/title/ic_schedule.png'),
+        imgurl:require('assets/logo.png'),
         labelPosition: 'left',
         stateList:['个人信息','主要经历'],
-        stateIndex:0,
-        showButton:false
+        workData:[
+          {
+            address:'广东深圳',
+            detail:'车公庙劲松大厦',
+            company:'深圳源动信息技术有限公司',
+            time:'2018.06-2019.09',
+            position:'职位名称',
+            department:'部门',
+            description:'具体内容'
+          },
+          {
+            address:'广东深圳',
+            detail:'车公庙劲松大厦',
+            company:'深圳源动信息技术有限公司',
+            time:'2018.06-2019.09',
+            position:'职位名称',
+            department:'部门',
+            description:'具体内容'
+          }
+        ],
+        skillTag:['标签一','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2'],
+        workTag:['标签一','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2']
       }
     },
     computed:{
@@ -46,28 +81,16 @@
       
     },
     methods:{
-      changeState(index){
-        this.stateIndex = index
-        if(index==1){
-          this.showButton=true
-        }else{
-          this.showButton=false
-        }
-      }
+      
     },
     components:{
-      TitleBar,
-      TabBar,
-      PersonInfo,
-      ProfessionalInfo,
-      ExperienceTag,
-      TableList
+      
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="stylus" scoped>
+<style scoped lang="stylus">
 @import "~assets/styles/mixins"
   .content>>>.el-form--label-left .el-form-item__label
     color:#333;
@@ -107,15 +130,6 @@
         button(#4ADEBD,100px,34px,12px,4px)
       .edit
         button(#4ED0E4,100px,34px,12px,4px)
-    .avatar
-      width:80px;
-      height:80px;
-      border-radius:50%;
-      background:#E8E8E8;
-      margin-left:320px;
-      margin-bottom:38px;
-    .check-button
-      color:#4CB4F7;
     .container
       display:flex;
       padding-bottom:38px;

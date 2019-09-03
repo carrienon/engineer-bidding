@@ -27,7 +27,7 @@
     data () {
       return {
         title:'合同管理',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_order manage.png'),
         contractState:0,//合同菜单
         operation:true,
         stateList:['合同审批','合同归档'],

@@ -3,11 +3,8 @@
     <ul class="state-list">
       <li :class="activeIndex===index?'active':''" v-for="(item,index) in stateList" :key="index" @click="changeState(index)">{{item}}</li>
     </ul>
-    <a href="javascript:;" @click="createOrder" v-show="showButton">
-      <i class="iconfont iconxinjian"></i>创建订单
-    </a>
-    <a href="javascript:;" @click="createBill" v-show="showBill">
-      <i class="iconfont iconxinjian"></i>申请发票
+    <a href="javascript:;" @click="createNew" v-show="showButton">
+      <i class="iconfont iconxinjian"></i>{{buttonName}}
     </a>
   </div>
 </template>
@@ -23,9 +20,9 @@
         type:Boolean,
         default:false
       },
-      showBill:{
-        type:Boolean,
-        default:false
+      buttonName:{
+        type:String,
+        default:''
       }
     },
     data() {
@@ -38,11 +35,8 @@
         this.activeIndex = index
         this.$emit('changeState',index)
       },
-      createOrder(){
-        this.$emit('createOrder')
-      },
-      createBill(){
-        this.$emit('createBill')
+      createNew(){
+        this.$emit('createNew')
       }
     }
   }

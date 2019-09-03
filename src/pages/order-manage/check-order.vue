@@ -64,7 +64,7 @@
     data () {
       return {
         title:'订单管理',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_order manage.png'),
         taskData:[
           {
             name:'任务名称任务名称',

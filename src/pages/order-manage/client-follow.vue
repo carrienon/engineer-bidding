@@ -23,7 +23,7 @@
     data () {
       return {
         title:'客户跟踪',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_order manage.png'),
         tableData: [
           {
             number: '1',

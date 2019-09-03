@@ -18,27 +18,27 @@ export default {
         {
           number:16,
           name:'我的待办',
-          imgurl:require('@/assets/image/logo.png'),
+          imgurl:require('@/assets/image/workbench/ic_backlog.png'),
           route:'./index'
         },{
           number:16,
           name:'我的已办',
-          imgurl:require('@/assets/image/logo.png'),
+          imgurl:require('@/assets/image/workbench/ic_already backlog.png'),
           route:'./work-done'
         },{
           number:16,
           name:'我的计划',
-          imgurl:require('@/assets/image/logo.png'),
+          imgurl:require('@/assets/image/workbench/ic_plan.png'),
           route:'./my-plan'
         },{
           number:16,
           name:'任务指派',
-          imgurl:require('@/assets/image/logo.png'),
+          imgurl:require('@/assets/image/workbench/ic_taskassignment.png'),
           route:'./task-assign'
         },{
           number:16,
           name:'系统消息',
-          imgurl:require('@/assets/image/logo.png'),
+          imgurl:require('@/assets/image/workbench/ic_new.png'),
           route:'./system-info'
         }
       ]

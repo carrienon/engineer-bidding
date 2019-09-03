@@ -24,37 +24,37 @@ export default {
       menuData:[
         {
           name:'工作台',
-          imgurl:Logo,
+          imgurl:require('@/assets/image/sidebar/ic_home.png'),
           route:'/work-bench'
         },
         {
           name:'订单管理',
-          imgurl:Logo,
+          imgurl:require('@/assets/image/sidebar/ic_orderform.png'),
           route:'/order-manage'
         },
         {
           name:'项目管理',
-          imgurl:Logo,
+          imgurl:require('@/assets/image/sidebar/ic_person.png'),
           route:'/project-manage'
         },
         {
           name:'文档管理',
-          imgurl:Logo,
+          imgurl:require('@/assets/image/sidebar/ic_contract.png'),
           route:'/document-manage'
         },
         {
           name:'财务管理',
-          imgurl:Logo,
+          imgurl:require('@/assets/image/sidebar/ic_finance.png'),
           route:'/finance-manage'
         },
         {
           name:'报表管理',
-          imgurl:Logo,
+          imgurl:require('@/assets/image/sidebar/ic_statement.png'),
           route:'/report-manage'
         },
         {
           name:'个人中心',
-          imgurl:Logo,
+          imgurl:require('@/assets/image/sidebar/ic_person.png'),
           route:'/user-center'
         }
       ]

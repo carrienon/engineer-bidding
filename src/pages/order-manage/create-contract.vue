@@ -71,7 +71,7 @@
     data () {
       return {
         title:'订单管理',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_order manage.png'),
         labelPosition: 'left',
         form1: {
           name:'',

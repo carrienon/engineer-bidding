@@ -21,7 +21,7 @@
     data () {
       return {
         title:'我的已办',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_myalready.png'),
         tableData: [
           {
             number: '1',

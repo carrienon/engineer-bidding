@@ -1,56 +1,28 @@
 <template>
   <div class="wrapper">
+    <div class="search">
+      <span class="keyword">
+        <el-input
+          placeholder="请输入项目名称"
+          prefix-icon="el-icon-search"
+          v-model="input21">
+        </el-input>
+      </span>
+      <span class="button">搜索</span>
+    </div>
     <table>
       <thead>
         <tr>
           <th v-for="(item,index) in titleData" :key="index"><div class="cell">{{item}}</div></th>
-          <!-- 订单管理平台方 -->
-          <th v-if="userRole===2&&(orderState===3||orderState===4||orderState===5||orderState===6)">甲方信息</th>
-          <th v-if="userRole===2&&(orderState===3||orderState===4||orderState===5||orderState===6)">乙方信息</th>
-          <th v-if="operation">操作</th>
-          <th v-if="userRole===2&&orderState===1">中标确认</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(items,sindex) in tableData" :key="sindex">
           <td v-for="(item,index) in items" :key="index"><div class="cell">{{item}}</div></td>
-          <!-- 订单管理平台方 -->
-          <td v-if="userRole===2&&(orderState===3||orderState===4||orderState===5||orderState===6)">
+          <td>
             <div class="button">
-              <span class="check" @click="checkInfo">查看</span>
-            </div>
-          </td>
-          <td v-if="userRole===2&&(orderState===3||orderState===4||orderState===5||orderState===6)">
-            <div class="button">
-              <span class="check" @click="checkInfo">查看</span>
-            </div>
-          </td>
-          <td v-if="operation">
-            <!-- 订单管理--中都方 -->
-            <div class="button" v-if="userRole===1">
-              <span class="edit" v-if="orderState===0" @click="editOrder">编辑</span>
-              <span class="delete" v-if="orderState===0" @click="deleteTask">删除</span>
-              <span class="check" v-if="orderState===1" @click="checkOrder">审核</span>
-              <span class="transfer" v-if="orderState===1" @click="transfer">转申</span>
-              <span class="urge" v-if="orderState===1" @click="urgeDo">催办</span>
-              <span class="edit" v-if="orderState===2" @click="chooseBidding">选择中标方</span>
-              <span class="check" v-if="orderState===3" @click="createContract">创建合同/查看</span>
-            </div>
-            <!-- 订单管理平台方 -->
-            <div class="button" v-if="userRole===2">
-              <span class="edit" v-if="orderState===0" @click="editOrder">编辑</span>
-              <span class="delete" v-if="orderState===0" @click="deleteTask">删除</span>
-              <span class="check" v-if="orderState===1" @click="cancelTask">取消任务</span>
-              <span class="transfer" v-if="orderState===1" @click="refreshOffer">重新报价</span>
-              <span class="check" v-if="orderState===2" @click="deleteTask">取消投标</span>
-              <span class="delete" v-if="orderState===3" @click="createContract">创建合同</span>
-              <span class="transfer" v-if="orderState===6" @click="judgeOrder">评价</span>
-            </div>
-          </td>
-          <!-- 订单管理平台方 -->
-          <td v-if="userRole===2&&orderState===1">
-            <div class="button">
-              <span class="check" @click="chooseBidding">选择中标方</span>
+              <span class="check">查看</span>
             </div>
           </td>
         </tr>
@@ -60,68 +32,39 @@
 </template>
 
 <script>
+  import SearchBox from '@/components/search-box'
   export default {
-    props:{
-      titleData:{
-        type:Array,
-        default:[]
-      },
-      tableData:{
-        type:Array,
-        default:[]
-      },
-      operation:{
-        type:Boolean,
-        default:false
-      },//是否有操作按钮
-      userRole:{
-        type:Number,
-        default:0
-      },
-      orderState:{
-        type:Number,
-        default:0
-      }
-    },
     data() {
       return {
-        
+        input21:'',
+        titleData:['序号','项目类型','单位名称','项目所在地'],
+        tableData:[
+          {
+            number:'1',
+            type:'项目类型',
+            name:'单位名称',
+            address:'项目所在地'
+          },
+          {
+            number:'1',
+            type:'项目类型',
+            name:'单位名称',
+            address:'项目所在地'
+          },
+          {
+            number:'1',
+            type:'项目类型',
+            name:'单位名称',
+            address:'项目所在地'
+          }
+        ]
       }
     },
     methods:{
-      editOrder(){
-        this.$router.push('./create-order')
-      },
-      deleteTask(){
-        this.$emit('deleteTask')
-      },
-      cancelTask(){
-        this.$emit('cancelTask')
-      },
-      refreshOffer(){
-        this.$emit('refreshOffer')
-      },
-      chooseBidding(){
-        this.$emit('chooseBidding')
-      },
-      createContract(){
-        this.$router.push('./create-contract')
-      },
-      checkInfo(){
-        this.$emit('checkInfo')
-      },
-      judgeOrder(){
-        this.$emit('judgeOrder')
-      },
-      checkOrder(){
-        this.$router.push('./check-order')
-      },
-      urgeDo(){
-        this.$emit('urgeDo')
-      },
-      transfer(){
-        this.$emit('transfer')
-      }
+     
+    },
+    components:{
+      SearchBox
     }
   }
 </script>
@@ -131,6 +74,16 @@
   @import "~assets/styles/mixins"
   .wrapper
     width:100%;
+    .search
+      margin:30px;
+      span 
+        margin-right:14px;
+        display:inline-block;
+      .keyword
+        width:300px;
+      .button
+        height:40px;
+        button(#4ED0E4,60px,40px,12px,4px)
     table
       width:100%;
       thead tr th:first-child .cell,tbody tr td:first-child .cell
@@ -151,21 +104,6 @@
         background:#FAFAFC;
       .button
         cursor:pointer;
-      .start
-        color:#45CB78;
-      .end
-        color:#52AAE8;
-      .edit
-        color:#21C79A;
-        margin-right:20px;
-      .delete
-        color:#FEC53B;
       .check
         color:#74B7F5;
-        margin-right:20px;
-      .transfer
-        color:#CC6AEC;
-        margin-right:20px;
-      .urge
-        color:#FF7EAF;
 </style>

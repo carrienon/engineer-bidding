@@ -2,7 +2,7 @@
   <div class="wrapper">
     <title-bar :title="title" :imgurl="imgurl"></title-bar>
     <div class="content">
-      <tab-bar :showButton="showButton" :stateList="stateList" @changeState="changeState" @createOrder="createOrder"></tab-bar>
+      <tab-bar :showButton="showButton" buttonName="创建订单" :stateList="stateList" @changeState="changeState" @createNew="createOrder"></tab-bar>
       <search-box  placeHolder="请输入订单编号/名称"></search-box>
       <table-list 
         :titleData="titleData" 
@@ -78,7 +78,7 @@
     data () {
       return {
         title:'订单管理',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_order manage.png'),
         showButton:true,
         userRole:1,//用户角色，1为中都方，2为平台方
         orderState:0,//订单状态

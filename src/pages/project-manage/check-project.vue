@@ -74,7 +74,7 @@
     data () {
       return {
         title:'项目管理',
-        imgurl:require('assets/logo.png'),
+        imgurl:require('assets/image/title/ic_project.png'),
         showCreate:false,
         taskData:[
           {
