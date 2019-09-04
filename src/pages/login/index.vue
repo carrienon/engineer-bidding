@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="container">
       <div class="content">
-        <div class="left"></div>
+        <div class="left"><img :src="imgUrl" /></div>
         <div class="right">
           <login v-if="showLogin" @forgetPassword="forgetPassword"></login>
           <forget v-else @backtoLogin="forgetPassword"></forget>
@@ -18,7 +18,8 @@
   export default {
     data () {
       return {
-        showLogin:true
+        showLogin:true,
+        imgUrl:require('assets/image/bg_login.png')
       }
     },
     mounted(){
@@ -56,8 +57,9 @@
         height:100%;
         .left
           width:518px;
-          height:550px;
+          line-height:550px;
           background:rgba(255,255,255,1);
-          opacity:0.58;
+          opacity:0.9;
           border-radius:14px 0px 0px 14px;
+          text-align:center;
 </style>

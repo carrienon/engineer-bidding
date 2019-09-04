@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <p class="top-title"><span>个人工作经历</span><a class="add" href="javascript:;">添加工作经历</a></p>
+    <p class="top-title"><span>个人工作经历</span><a class="add" href="javascript:;" @click="addWork">添加工作经历</a></p>
     <div class="container work-wrapper">
       <div class="work-item" v-for="(item,index) in workData" :key="index">
         <div class="work-left">
@@ -22,23 +22,6 @@
         </div>
       </div>
     </div>
-    <p class="top-title"><span>个人标签</span><a class="edit" href="javascript:;">编辑</a></p>
-    <div class="container">
-      <div class="tag-item">
-        <div class="tag-left">职业技能</div>
-        <div class="tag-right">
-          <span v-for="(item,index) in skillTag" :key="index">{{item}}<i class="iconfont icondelete-s"></i></span>
-          <span class="add-tag"><i class="iconfont iconuntitled44"></i></span>
-        </div>
-      </div>
-      <div class="tag-item">
-        <div class="tag-left">工作技能</div>
-        <div class="tag-right">
-          <span v-for="(item,index) in workTag" :key="index">{{item}}<i class="iconfont icondelete-s"></i></span>
-          <span class="add-tag"><i class="iconfont iconuntitled44"></i></span>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -46,10 +29,7 @@
   export default {
     data () {
       return {
-        title:'个人中心',
-        imgurl:require('assets/logo.png'),
         labelPosition: 'left',
-        stateList:['个人信息','主要经历'],
         workData:[
           {
             address:'广东深圳',
@@ -69,9 +49,7 @@
             department:'部门',
             description:'具体内容'
           }
-        ],
-        skillTag:['标签一','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2'],
-        workTag:['标签一','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2','标签名称2']
+        ]
       }
     },
     computed:{
@@ -81,7 +59,9 @@
       
     },
     methods:{
-      
+      addWork(){
+        this.$emit('addWork')
+      }
     },
     components:{
       
@@ -185,41 +165,4 @@
                 width:300px;
             p:last-child
               margin-bottom:0;
-    .tag-item
-      margin-left:68px;
-      display:flex;
-      font-size:14px;
-      color:#999;
-      .tag-left
-        width:120px;
-      .tag-right
-        span
-          color:#fff;
-          display:inline-block;
-          margin-right:18px;
-          padding:10px 20px;
-          background:#94D2DB;
-          border-radius:4px;
-          margin-bottom:12px;
-          position:relative;
-          i
-            position:absolute;
-            right:-8px;
-            top:-8px;
-            color:#F96079;
-            font-size:16px;
-            cursor:pointer;
-        .add-tag
-          width:108px;
-          line-height:31px;
-          height:31px;
-          padding:0;
-          text-align:center;
-          border:1px dashed #BFBFBF;
-          background:#F6F7FB;
-          cirsor:pointer;
-          i
-            position:static;
-            color:#C6C6C6;
-            font-size:15px;
 </style>

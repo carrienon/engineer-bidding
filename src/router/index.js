@@ -154,6 +154,11 @@ export default new Router({
           path: 'index',
           component: () => import('@/pages/user-center/index'),
           name: 'UserCenter'
+        },
+        {
+          path: 'create-experience',
+          component: () => import('@/pages/user-center/create-experience'),
+          name: 'CreateExperience'
         }
       ]
     }

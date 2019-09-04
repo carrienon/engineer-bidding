@@ -146,53 +146,32 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-@import "~assets/styles/mixins"
-  .content>>>.el-form--label-left .el-form-item__label
-    color:#333;
-  .content>>>.el-input__inner,.content>>>.el-textarea__inner
-    width:300px;
-    border:none;
-    background:#F7F6F7;
-    font-family:'MicrosoftYaHei';
-  .content>>>.el-input__inner::placeholder,.content>>>.el-textarea__inner::placeholder
-    color:#999999;
-    font-family:'MicrosoftYaHei';
-  .content>>>.el-form-item__content
+  @import "~assets/styles/mixins"
+  .top-title
+    padding:34px 30px 30px 68px;
+    line-height:34px;
+    box-sizing:border-box;
+    width:100%;
     display:flex;
-  .content>>>.el-button
-    background:#74B7F5;
-    font-family:'MicrosoftYaHei';
-    color:#fff;
-    border:none;
-  .content>>>.el-radio
-    line-height:40px;
-  .content
-    boxstyle()
-    .top-title
-      padding:34px 30px 30px 68px;
-      line-height:34px;
-      box-sizing:border-box;
-      width:100%;
-      display:flex;
-      justify-content:space-between;
-      span 
-        color:#85C4CE;
-        font-weight:bold;
-        font-size:16px;
-      a
-        button(#9E98D1,100px,34px,12px,4px)
-      .add
-        button(#4ADEBD,100px,34px,12px,4px)
-      .edit
-        button(#4ED0E4,100px,34px,12px,4px)
-    .check-button
-      color:#4CB4F7;
-    .container
-      display:flex;
-      padding-bottom:38px;
-      border-bottom:1px solid #EFEFEF;
-      .left
-        margin-left:68px;
-      .right
-        margin-left:165px;
+    justify-content:space-between;
+    span 
+      color:#85C4CE;
+      font-weight:bold;
+      font-size:16px;
+    a
+      button(#9E98D1,100px,34px,12px,4px)
+    .add
+      button(#4ADEBD,100px,34px,12px,4px)
+    .edit
+      button(#4ED0E4,100px,34px,12px,4px)
+  .check-button
+    color:#4CB4F7;
+  .container
+    display:flex;
+    padding-bottom:38px;
+    border-bottom:1px solid #EFEFEF;
+    .left
+      margin-left:68px;
+    .right
+      margin-left:165px;
 </style>
