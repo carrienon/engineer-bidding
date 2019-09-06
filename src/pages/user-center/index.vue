@@ -28,7 +28,8 @@
       </div>
     </div>
     <add-work :showAddwork="showAddwork" @cancelAddwork="cancelAddwork" @confirmAddwork="confirmAddwork"></add-work>
-    <add-tag :showAddtag="showAddtag" @confirmAdd="confirmAdd" @closeAddtag="closeAddtag"></add-tag>
+    <add-tag :showAddtag="showAddtag" @confirmAdd="confirmAdd" @closeAddtag="closeAddtag" @defineTag="defineTag"></add-tag>
+    <define-tag :showDefine="showDefine" @closeDefine="defineTag"></define-tag>
   </div>
 </template>
 
@@ -46,6 +47,7 @@
 
   import AddWork from './components/add-work'
   import AddTag from '@/components/add-tag'
+  import DefineTag from './components/define-tag'
 
   export default {
     data () {
@@ -58,6 +60,7 @@
         showButton:false,
         showAddwork:false,
         showAddtag:false,
+        showDefine:false,
         userRole:0//0是中都人员，1是平台注册邀请，2是平台注册非邀请
       }
     },
@@ -93,6 +96,10 @@
       },
       closeAddtag(){
         this.showAddtag = !this.showAddtag
+      },
+      defineTag(){
+        this.showDefine = !this.showDefine
+        this.showAddtag = !this.showAddtag
       }
     },
     components:{
@@ -106,7 +113,8 @@
       NoinviteInfo,
       TableList,
       AddWork,
-      AddTag
+      AddTag,
+      DefineTag
     }
   }
 </script>

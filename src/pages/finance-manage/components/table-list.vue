@@ -17,13 +17,13 @@
           </td>
           <td v-if="tabState===0">
             <div class="button">
-              <span class="check">查看明细</span>
-              <span class="gather">收款</span>
+              <span class="check" @click="checkDetail">查看明细</span>
+              <span class="gather" @click="collection">收款</span>
             </div>
           </td>
           <td v-if="tabState===1||tabState===2">
             <div class="button">
-              <span class="check">查看/修改</span>
+              <span class="check" @click="modifyBill">查看/修改</span>
             </div>
           </td>
           <td v-if="tabState===1||tabState===2">
@@ -70,7 +70,15 @@
       }
     },
     methods:{
-      
+      checkDetail(){
+        this.$emit('checkDetail')
+      },
+      collection(){
+        this.$emit('collection')
+      },
+      modifyBill(){
+        this.$emit('modifyBill')
+      }
     }
   }
 </script>

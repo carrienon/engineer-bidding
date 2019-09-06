@@ -8,10 +8,12 @@
         :titleData="titleData" 
         :tableData="tableData" 
         :tabState="tabState"
+        @checkDetail="checkDetail"
       >
       </table-list>
       <bottom-pagination></bottom-pagination>
     </div>
+    <check-detail :showDetail="showDetail" @closeDetail="checkDetail"></check-detail>
   </div>
 </template>
 
@@ -20,6 +22,7 @@
   import TabBar from '@/components/tab-bar'
   import SearchBox from '@/components/search-box'
   import TableList from './components/table-list'
+  import CheckDetail from './components/check-detail'
   import BottomPagination from '@/components/bottom-pagination'
 
   export default {
@@ -32,6 +35,7 @@
         showSelect:false,
         showDate:false,
         showBill:false,
+        showDetail:false,
         stateList:['订单数据报表','项目报表','收款状况报表'],
         tableData:[
           {
@@ -76,6 +80,9 @@
         }else{
           this.showBill=false
         }
+      },
+      checkDetail(){
+        this.showDetail = !this.showDetail
       }
     },
     components:{
@@ -83,6 +90,7 @@
       TabBar,
       SearchBox,
       TableList,
+      CheckDetail,
       BottomPagination
     }
   }

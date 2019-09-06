@@ -14,7 +14,7 @@
           </td>
           <td v-if="tabState===1">
             <div class="button">
-              <span class="check">查看</span>
+              <span class="check" @click="checkDetail">查看</span>
             </div>
           </td>
         </tr>
@@ -49,7 +49,10 @@
       }
     },
     methods:{
-      
+      checkDetail(){
+        console.log(1)
+        this.$emit('checkDetail')
+      }
     }
   }
 </script>

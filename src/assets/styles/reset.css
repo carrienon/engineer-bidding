@@ -25,13 +25,13 @@ hr {height: .02rem;margin: .1rem 0;border: medium none;border-top: .02rem solid 
 a {color: #25a4bb;text-decoration: none;}
 
 body::-webkit-scrollbar{
-width: 12px;
+    width: 12px;
 }
 body::-webkit-scrollbar-track{
-background:#F2F2F5;
-border-radius: 5px;
+    background:#F2F2F5;
+    border-radius: 5px;
 }
 body::-webkit-scrollbar-thumb{
-background:#DEDEE0;
-border-radius: 5px;
+    background:#DEDEE0;
+    border-radius: 5px;
 }

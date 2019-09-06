@@ -9,6 +9,7 @@
           :key="index"
           @click="chooseTag(index)">{{item.name}}</li>
       </ul>
+      <p class="define" @click="defineTag"><i class="iconfont icontianjia"></i>自定义标签</p>
       <p class="button"><a href="javascript:;" @click="confirmAdd">确认</a></p>
     </div>
   </div>
@@ -70,6 +71,9 @@ export default {
     },
     closeAddtag(){
       this.$emit('closeAddtag')
+    },
+    defineTag(){
+      this.$emit('defineTag')
     }
   }
 }
@@ -127,6 +131,13 @@ export default {
           box-shadow:0px 1px 4px 0px rgba(184,220,219,0.77);
           color:#fff;
           border:none;
+      .define
+        color:#74C3F6;
+        display:flex;
+        margin-bottom:30px;
+        cursor:pointer;
+        i 
+          margin-right:10px;
       .button
         text-align:center;
         a
