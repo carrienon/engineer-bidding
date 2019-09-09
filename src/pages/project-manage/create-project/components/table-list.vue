@@ -4,27 +4,26 @@
       <thead>
         <tr>
           <th v-for="(item,index) in titleData" :key="index"><div class="cell">{{item}}</div></th>
-          <th v-if="projectSate===0"><div class="cell">里程碑情况</div></th>
-          <th v-if="operation"><div class="cell">操作</div></th>
+          <th v-if="stateIndex==1"><div class="cell">成员信息</div></th>
+          <th v-if="stateIndex==1"><div class="cell">操作</div></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(items,sindex) in tableData" :key="sindex">
           <td v-for="(item,index) in items" :key="index">
-            <div class="cell another" v-if="item.length===7">
-              <div class="cell-item"  v-for="(itemd,dindex) in item" :key="dindex">
-                <p :class="['circle',{'no-active':!itemd.complete}]"><span><em></em></span><span></span></p>
-                <p :class="['title',{'nonactive':!itemd.complete}]">{{itemd.title}}</p>
-                <p class="time">{{itemd.time}}</p>
-              </div>
+            <div class="cell" v-if="item">{{item}}</div>
+            <div class="button" v-else>
+              <span class="check">建立计划时间</span>
             </div>
-            <div class="cell" v-else>{{item}}</div>
           </td>
-          <td v-if="operation">
+          <td v-if="stateIndex==1">
             <div class="button">
-              <span class="check" v-if="projectSate===0" @click="checkDetail">查看</span>
-              <span class="check" v-if="projectSate===1" @click="distribute">分配/查看</span>
-              <span class="check" v-if="projectSate===2">查看</span>
+              <span class="check" @click="checkProject">查看成员信息</span>
+            </div>
+          </td>
+          <td v-if="stateIndex==1">
+            <div class="button">
+              <span class="check" @click="checkProject">新增成员</span>
             </div>
           </td>
         </tr>
@@ -44,30 +43,19 @@
         type:Array,
         default:[]
       },
-      operation:{
-        type:Boolean,
-        default:false
-      },//是否有操作按钮
-      userRole:{
-        type:Number,
-        default:0
-      },
-      projectSate:{
-        type:Number,
-        default:0
+      stateIndex:{
+        type:String,
+        default:'0'
       }
     },
     data() {
       return {
-        
+        buttonName:'建立计划时间'
       }
     },
     methods:{
-      checkDetail(){
-        this.$router.push('./project-detail')
-      },
-      distribute(){
-        this.$router.push('./check-project')
+      checkProject(){
+        
       }
     }
   }

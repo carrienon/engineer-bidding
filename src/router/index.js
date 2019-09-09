@@ -111,6 +111,11 @@ export default new Router({
           path: 'project-detail',
           component: () => import('@/pages/project-manage/project-detail/index'),
           name: 'ProjectDetail'
+        },
+        {
+          path: 'create-project',
+          component: () => import('@/pages/project-manage/create-project/index'),
+          name: 'CreateProject'
         }
       ]
     },

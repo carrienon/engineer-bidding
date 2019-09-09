@@ -2,7 +2,7 @@
   <div class="wrapper">
     <title-bar :title="title" :imgurl="imgurl"></title-bar>
     <div class="content">
-      <top-title titleName="项目详情">
+      <top-title titleName="创建项目">
         <div slot="rightButton" class="right">
           <a href="javascript:;" class="reset" @click="changePro">项目变更</a>
         </div>
@@ -17,9 +17,6 @@
         </section>
         <section v-if="stateIndex===2">
           <mile-stone></mile-stone>
-        </section>
-        <section v-if="stateIndex===3">
-          <project-assess></project-assess>
         </section>
       </div>
     </div>
@@ -36,7 +33,6 @@
   import BasicInfo from './components/basic-info'
   import ProjectMember from './components/project-member'
   import MileStone from './components/mile-stone'
-  import ProjectAssess from './components/project-assess'
 
   import CreateAssess from './components/create-assess'
   import ProjectChange from './components/project-change'
@@ -47,7 +43,7 @@
         title:'项目管理',
         imgurl:require('assets/image/title/ic_project.png'),
         stateIndex:0,
-        stateList:['项目基本信息','项目成员','项目计划里程碑','项目评估'],
+        stateList:['项目基本信息','项目成员','项目计划'],
         showButton:false,
         showAddassess:false,
         showChangepro:false
@@ -86,7 +82,6 @@
       BasicInfo,
       ProjectMember,
       MileStone,
-      ProjectAssess,
       CreateAssess,
       ProjectChange
     }

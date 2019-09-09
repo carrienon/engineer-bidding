@@ -2,7 +2,7 @@
   <div class="wrapper">
     <title-bar :title="title" :imgurl="imgurl"></title-bar>
     <div class="content">
-      <tab-bar :stateList="stateList" :showButton="showButton" buttonName="创建项目"  @changeState="changeState"></tab-bar>
+      <tab-bar :stateList="stateList" :showButton="showButton" buttonName="创建项目"  @changeState="changeState" @createNew="createNew"></tab-bar>
       <search-box :showSelect="showSelect"  placeHolder="请输入订单编号/名称" v-if="projectSate!=1"></search-box>
       <table-list 
         :titleData="titleData" 
@@ -174,7 +174,9 @@
           this.tableData = this.tableDatatwo
           this.showSelect = true
         }
-        console.log(this.showSelect)
+      },
+      createNew(){
+        this.$router.push('./create-project')
       }
     },
     components:{
