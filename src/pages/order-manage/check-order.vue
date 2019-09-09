@@ -35,7 +35,7 @@
       <p class="info-title">分解任务</p>
       <div class="info-wrapper">
         <div class="task-item" v-for="(item,index) in taskData" :key="index">
-          <p class="task-number"><i class="iconfont icontag"></i>任务{{index+1}}</p>
+          <p class="task-number"><img :src="taskImg" />任务{{index+1}}</p>
           <div class="task">
             <p><span>任务名称</span><span>{{item.name}}</span></p>
             <p><span>任务占比</span><span>{{item.rate}}</span></p>
@@ -65,6 +65,7 @@
       return {
         title:'订单管理',
         imgurl:require('assets/image/title/ic_order manage.png'),
+        taskImg:require('assets/image/ic_task.png'),
         taskData:[
           {
             name:'任务名称任务名称',
