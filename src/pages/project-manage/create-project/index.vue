@@ -13,15 +13,20 @@
           <basic-info></basic-info>
         </section>
         <section v-if="stateIndex===1">
-          <project-member></project-member>
+          <project-member @checkMember="closeMember" @addMember="closeSearch"></project-member>
         </section>
         <section v-if="stateIndex===2">
-          <mile-stone></mile-stone>
+          <mile-stone @setTime="setTime"></mile-stone>
         </section>
       </div>
     </div>
-    <create-assess :showAddassess="showAddassess" @cancelAdd="cancelAdd" @confirmAdd="confirmAdd"></create-assess>
-    <project-change :showChangepro="showChangepro" @cancelChange="changePro" @confirmChange="changePro"></project-change>
+    <!-- 查看成员 -->
+    <check-member :showMember="showMember" @closeMember="closeMember"></check-member>
+    <!-- 新增成员 -->
+    <search-member :showSearch="showSearch" @closeSearch="closeSearch" @confirmSearch="confirmSearch"></search-member>
+    <choose-member :showChoose="showChoose" @closeChoose="closeChoose"></choose-member>
+    <!-- 选择日期 -->
+    <choose-date title="选择时间" :showDate="showDate" @cancelDate="cancelDate" @confirmDate="confirmDate"></choose-date>
   </div>
 </template>
 
@@ -29,13 +34,15 @@
   import TitleBar from '@/components/title-bar'
   import TopTitle from './components/top-title'
   import TabBar from '@/components/tab-bar'
+  import ChooseDate from '@/components/choose-date'
 
   import BasicInfo from './components/basic-info'
   import ProjectMember from './components/project-member'
   import MileStone from './components/mile-stone'
 
-  import CreateAssess from './components/create-assess'
-  import ProjectChange from './components/project-change'
+  import CheckMember from './components/check-member'
+  import SearchMember from './components/search-member'
+  import ChooseMember from './components/choose-member'
 
   export default {
     data () {
@@ -46,7 +53,11 @@
         stateList:['项目基本信息','项目成员','项目计划'],
         showButton:false,
         showAddassess:false,
-        showChangepro:false
+        showChangepro:false,
+        showMember:false,
+        showSearch:false,
+        showChoose:false,
+        showDate:false
       }
     },
     computed:{
@@ -73,6 +84,31 @@
       //项目变更
       changePro(){
         this.showChangepro = !this.showChangepro
+      },
+      //查看成员
+      closeMember(){
+        this.showMember = !this.showMember
+      },
+      //新增成员
+      closeSearch(){
+        this.showSearch = !this.showSearch
+      },
+      confirmSearch(){
+        this.showSearch = !this.showSearch
+        this.showChoose = !this.showChoose
+      },
+      closeChoose(){
+        this.showChoose = !this.showChoose
+      },
+      //选择计划日期
+      setTime(){
+        this.showDate = !this.showDate
+      },
+      cancelDate(){
+        this.showDate = !this.showDate
+      },
+      confirmDate(){
+        this.showDate = !this.showDate
       }
     },
     components:{
@@ -82,8 +118,10 @@
       BasicInfo,
       ProjectMember,
       MileStone,
-      CreateAssess,
-      ProjectChange
+      CheckMember,
+      SearchMember,
+      ChooseMember,
+      ChooseDate
     }
   }
 </script>

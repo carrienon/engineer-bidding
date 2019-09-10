@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <table-list :titleData="titleData" :tableData="tableData"></table-list>
+    <table-list :titleData="titleData" :tableData="tableData" @setTime="setTime"></table-list>
   </div>
 </template>
 
@@ -39,7 +39,9 @@
       
     },
     methods:{
-      
+      setTime(){
+        this.$emit('setTime')
+      }
     },
     components:{
       TableList

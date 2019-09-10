@@ -3,32 +3,20 @@
     <table width="500">
       <thead>
         <tr>
+          <th></th>
           <th v-for="(item,index) in titleData" :key="index"><div class="cell">{{item}}</div></th>
-          <th v-if="stateIndex==1"><div class="cell">成员信息</div></th>
-          <th v-if="stateIndex==1"><div class="cell">操作</div></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(items,sindex) in tableData" :key="sindex">
+          <td><el-checkbox v-model="checked"></el-checkbox></td>
           <td v-for="(item,index) in items" :key="index">
-            <div class="cell" v-if="item">{{item}}</div>
-            <div class="button" v-else>
-              <span class="check" @click="setTime">建立计划时间</span>
-            </div>
-          </td>
-          <td v-if="stateIndex==1">
-            <div class="button">
-              <span class="check" @click="checkMember">查看成员信息</span>
-            </div>
-          </td>
-          <td v-if="stateIndex==1">
-            <div class="button">
-              <span class="check" @click="addMember">新增成员</span>
-            </div>
+            <div class="cell">{{item}}</div>
           </td>
         </tr>
       </tbody>
     </table>
+    <p class="button"><a href="javascript:;" @click="confirmChoose">确认</a></p>
   </div>
 </template>
 
@@ -42,26 +30,16 @@
       tableData:{
         type:Array,
         default:[]
-      },
-      stateIndex:{
-        type:String,
-        default:'0'
       }
     },
     data() {
       return {
-        buttonName:'建立计划时间'
+        checked:true
       }
     },
     methods:{
-      checkMember(){
-        this.$emit('checkMember')
-      },
-      addMember(){
-        this.$emit('addMember')
-      },
-      setTime(){
-        this.$emit('setTime')
+      confirmChoose(){
+        this.$emit('confirmChoose')
       }
     }
   }
@@ -145,4 +123,9 @@
       .check
         color:#74B7F5;
         margin-right:20px;
+  .button
+    text-align:center
+    a
+      display:inline-block;
+      button(#4ED0E4,140px,40px,14px,4px)
 </style>

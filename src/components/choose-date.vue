@@ -1,34 +1,20 @@
 <template>
-  <div class="wrapper" v-show="showAddassess">
+  <div class="wrapper" v-show="showDate">
     <div class="content">
-      <p class="title">新增评估</p>
+      <p class="title">{{title}}</p>
       <el-form ref="form" :model="form" label-width="115px" label-position="left">
-        <el-form-item label="起始时间">
+        <el-form-item label="选择时间">
           <el-date-picker
             v-model="form.value1"
-            type="daterange"
-            range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期">
+            type="date"
+            placeholder="选择日期">
           </el-date-picker>
         </el-form-item>
-        <el-form-item label="负责人">
-          <el-input v-model="form.name" placeholder="请输入负责人"></el-input>
-        </el-form-item>
-        <el-form-item label="备注">
-          <el-input v-model="form.name" placeholder="请输入备注"></el-input>
-        </el-form-item>
-        <el-form-item label="完成度">
-          <el-input v-model="form.name" placeholder="请输入完成度">
-          <i
-            slot="suffix">
-          %</i></el-input>
-        </el-form-item>
-        <el-form-item label="评估备注">
-          <el-input type="textarea" rows="3" v-model="form.desc" placeholder="请输入部门描述"></el-input>
+         <el-form-item label="计划内容" v-show="showContent">
+          <el-input type="textarea" rows="5" v-model="form.desc"></el-input>
         </el-form-item>
       </el-form>
-      <p class="button"><a href="javascript:;" @click="cancelAdd">取消</a><a href="javascript:;" @click="confirmAdd">确认</a></p>
+      <p class="button"><a href="javascript:;" @click="cancelDate">取消</a><a href="javascript:;" @click="confirmDate">确认</a></p>
     </div>
   </div>
 </template>
@@ -36,7 +22,15 @@
 <script>
 export default {
   props:{
-    showAddassess:{
+    showDate:{
+      type:Boolean,
+      default:false
+    },
+    title:{
+      type:String,
+      default:''
+    },
+    showContent:{
       type:Boolean,
       default:false
     }
@@ -44,18 +38,17 @@ export default {
   data () {
     return {
       form:{
-        name:'',
-        desc:'',
-        value1:''
+        value1:'',
+        desc:''
       }
     }
   },
   methods:{
-    cancelAdd(){
-      this.$emit('cancelAdd')
+    cancelDate(){
+      this.$emit('cancelDate')
     },
-    confirmAdd(){
-      this.$emit('confirmAdd')
+    confirmDate(){
+      this.$emit('confirmDate')
     }
   }
 }
@@ -65,8 +58,8 @@ export default {
 <style lang="stylus" scoped>
   @import "~assets/styles/mixins"
   .wrapper>>>.el-input
-    width:350px;
-  .wrapper>>>.el-input__inner::-webkit-input-placeholder,.wrapper>>>.el-textarea__inner::-webkit-input-placeholder,.wrapper>>>.el-range-input
+    width:277px;
+  .wrapper>>>.el-input__inner::-webkit-input-placeholder,.wrapper>>>.el-textarea__inner::-webkit-input-placeholder
     font-family:'MicrosoftYaHei';
     color:#ccc;
   .wrapper
@@ -82,7 +75,7 @@ export default {
       left:50%;
       top:50%;
       transform:translate(-50%,-50%);
-      width:600px;
+      width:488px;
       padding:39px 0 45px 0;
       box-sizing:border-box;
       background:rgba(255,255,255,1);

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <table-list :titleData="titleData" :tableData="tableData" stateIndex="1"></table-list>
+    <table-list :titleData="titleData" :tableData="tableData" stateIndex="1" @checkMember="checkMember" @addMember="addMember"></table-list>
   </div>
 </template>
 
@@ -36,7 +36,12 @@
       
     },
     methods:{
-      
+      checkMember(){
+        this.$emit('checkMember')
+      },
+      addMember(){
+        this.$emit('addMember')
+      }
     },
     components:{
       TableList
