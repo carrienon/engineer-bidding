@@ -169,6 +169,11 @@ export default new Router({
           path: 'create-experience',
           component: () => import('@/pages/user-center/create-experience'),
           name: 'CreateExperience'
+        },
+        {
+          path: 'modify-password',
+          component: () => import('@/pages/user-center/modify-password'),
+          name: 'ModifyPassword'
         }
       ]
     }

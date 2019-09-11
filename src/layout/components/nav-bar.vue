@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="right">
-      <a href="javascript:;"><i class="iconfont icontubiao01"></i></a>
-      <a href="javascript:;"><i class="iconfont icontixing"></i></a>
-      <a href="javascript:;"><img :src="logoUrl" />朱俊成</a>
+      <a href="javascript:;" @click="gotoModify"><i class="iconfont icontubiao01"></i></a>
+      <a href="javascript:;" @click="gotoInfo"><i class="iconfont icontixing"></i></a>
+      <a href="javascript:;" @click="gotoUser"><img :src="logoUrl" />朱俊成</a>
     </div>
   </div>
 </template>
@@ -63,6 +63,15 @@ export default {
   methods:{
     goBack(){
       this.$router.go(-1)
+    },
+    gotoInfo(){
+      this.$router.push('/work-bench/system-info')
+    },
+    gotoUser(){
+      this.$router.push('/user-center/index')
+    },
+    gotoModify(){
+      this.$router.push('/user-center/modify-password')
     }
   }
 }
